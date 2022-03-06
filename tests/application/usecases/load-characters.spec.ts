@@ -18,6 +18,7 @@ const makeSut = (): SutTypes => {
 }
 
 describe('Add character usecase', () => {
+
   test('Should return new character on success', async () => {
     const { sut } = makeSut()
     const character = mockAddCharacterParams()
@@ -25,6 +26,29 @@ describe('Add character usecase', () => {
     const newCharacter = await sut.add(character)
 
     expect(newCharacter).toMatchObject(character)
+  })
+
+  test('should be return new character with new id and created date', async () => {
+    const { sut } = makeSut()
+    const character = mockAddCharacterParams()
+    const createdDate = new Date()
+    
+    const newCharacter = await sut.add(character)
+
+    expect(newCharacter.id).toBeTruthy()
+    expect(newCharacter.createdAt).toBeTruthy()
+    expect(newCharacter.createdAt).toEqual(createdDate)
+  })
+
+  test('should return error 400 if the name is null or undefined', async () => {
+    const { sut } = makeSut()
+    const character = mockAddCharacterParams()
+
+    character.name = null
+
+    const newCharacter = await sut.add(character)
+
+    expect(newCharacter).toBeNull()
   })
 })
 

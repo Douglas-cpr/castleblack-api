@@ -7,7 +7,7 @@ import { characters } from "@/infra/data-sources";
 export class FakeAddCharacterRepository implements AddCharacterRepository {
   async add(character: Character): Promise<CharacterModel> {
     const newCharacterId = uuidv4();
-    const newCharacter = {id: newCharacterId, ...character};
+    const newCharacter = {id: newCharacterId, ...character, createdAt: new Date()};
 
     characters.push(newCharacter);
 

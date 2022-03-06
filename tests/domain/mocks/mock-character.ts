@@ -10,6 +10,7 @@ export const mockCharacterModel = (): CharacterModel => ({
   health: faker.datatype.number({ min: 1, max: 100 }),
   weapon: null,
   bag: [],
+  createdAt: new Date()
 })
 
 export const mockCharactersModel = (): CharacterModel[] => [

@@ -8,10 +8,11 @@ export class AddCharacterRepositorySpy implements AddCharacterRepository {
 
   public async add(character: Character): Promise<CharacterModel> {
     this.addCharacterCalledWith = character;
-    
+
     const addCharacterReturnValue = {
-      id: faker.random.uuid(),
-      ...this.addCharacterCalledWith
+      id: faker.datatype.uuid(),
+      ...this.addCharacterCalledWith,
+      createdAt: new Date()
     }
 
     return addCharacterReturnValue

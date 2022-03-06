@@ -4,12 +4,14 @@
     "module": "commonjs",
     "target": "esnext",
     "esModuleInterop": true,
-    "rootDir": "src",
+    "sourceMap": true,
+    "rootDirs": ["src", "tests"],
     "baseUrl": "src",
-    "allowJs": true,
     "paths": {
+      "@/tests/*": ["../tests/*"],
       "@/*": ["*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "tests"],
+  "exclude": []
 }

@@ -1,4 +1,4 @@
-import { Controller } from '@/presentation/contracts';
+import { Controller } from '@/presentation/contracts'
 
 import { Request, Response } from 'express'
 
@@ -6,7 +6,7 @@ export const adaptRoute = (controller: Controller<any>) => {
   return async (req: Request, res: Response) => {
     const request = {
       ...(req.body || {}),
-      ...(req.params || {}),
+      ...(req.params || {})
     }
 
     const httpResponse = await controller.handle(request)

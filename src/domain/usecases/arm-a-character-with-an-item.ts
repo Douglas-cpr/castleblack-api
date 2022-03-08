@@ -1,4 +1,4 @@
-import { Character } from "../entities";
+import { Character } from '../entities'
 
 export interface ArmACharacterWithAnItem {
   arm: (characterId: string, itemId: string) => Promise<Character>

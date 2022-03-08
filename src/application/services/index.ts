@@ -1,2 +1,2 @@
-export * from './add-character';
-export * from './load-characters';
+export * from './add-character'
+export * from './load-characters'

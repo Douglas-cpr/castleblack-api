@@ -1,6 +1,6 @@
-export type HttpResponse <T = any> = {
-  statusCode: number;
-  body: T;
+export type HttpResponse<T = any> = {
+  statusCode: number
+  body: T
 }
 
 export const ok = (data: any): HttpResponse => ({

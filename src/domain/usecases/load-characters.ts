@@ -1,5 +1,5 @@
-import { Character } from "@/domain/entities";
+import { Character } from '@/domain/entities'
 
-export interface LoadCharacters{ 
+export interface LoadCharacters {
   load: () => Promise<Character[]>
 }

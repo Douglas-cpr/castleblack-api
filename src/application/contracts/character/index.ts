@@ -1,2 +1,2 @@
-export * from './load-characters-repository';
-export * from './add-character-repository';
+export * from './load-characters-repository'
+export * from './add-character-repository'

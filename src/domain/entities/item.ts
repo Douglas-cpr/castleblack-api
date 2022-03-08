@@ -1,4 +1,4 @@
 export type Item = {
-  name: string;
-  damage: number;
+  name: string
+  damage: number
 }

@@ -1,5 +1,5 @@
-import { CharacterModel } from "@/application/models";
+import { CharacterModel } from '@/application/models'
 
 export interface LoadCharactersRepository {
-  load(): Promise<CharacterModel[]>;
+  load(): Promise<CharacterModel[]>
 }

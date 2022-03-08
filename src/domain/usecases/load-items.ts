@@ -1,4 +1,4 @@
-import { Item } from "@/domain/entities";
+import { Item } from '@/domain/entities'
 
 export interface LoadItems {
   load: () => Promise<Item[]>

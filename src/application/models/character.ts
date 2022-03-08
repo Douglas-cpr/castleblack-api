@@ -1,6 +1,6 @@
-import type { Character } from "@/domain/entities"
+import type { Character } from '@/domain/entities'
 
 export interface CharacterModel extends Character {
-  id: string;
-  createdAt: Date;
+  id: string
+  createdAt: Date
 }

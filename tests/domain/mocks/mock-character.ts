@@ -1,7 +1,7 @@
-import { CharacterModel } from '@/application/models';
-import { Character } from '@/domain/entities';
+import { CharacterModel } from '@/application/models'
+import { Character } from '@/domain/entities'
 
-import faker from 'faker';
+import faker from 'faker'
 
 export const mockCharacterModel = (): CharacterModel => ({
   id: faker.random.uuid(),
@@ -23,5 +23,5 @@ export const mockAddCharacterParams = (): Character => ({
   age: faker.datatype.number({ min: 1, max: 100 }),
   health: faker.datatype.number({ min: 1, max: 100 }),
   weapon: null,
-  bag: [],
+  bag: []
 })

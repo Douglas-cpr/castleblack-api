@@ -1,13 +1,8 @@
 import { AddCharacter } from '@/domain/usecases'
-import {
-  Controller,
-  HttpResponse,
-  ok,
-  Validation
-} from '@/presentation/contracts'
+import { Controller, HttpResponse, Validation } from '@/presentation/contracts'
 import { Character } from '@/domain/entities'
 import { CharacterModel } from '@/application/models'
-import { serverError, badRequest } from '@/presentation/utils'
+import { serverError, badRequest, ok } from '@/presentation/utils'
 
 export class AddCharacterController implements Controller<Character> {
   constructor(

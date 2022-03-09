@@ -1,7 +1,7 @@
 import { LoadCharacters } from '@/domain/usecases'
 import { CharacterModel } from '@/application/models'
-import { Controller, HttpResponse, ok } from '@/presentation/contracts'
-import { serverError } from '@/presentation/utils'
+import { Controller, HttpResponse } from '@/presentation/contracts'
+import { serverError, ok } from '@/presentation/utils'
 
 export class LoadCharactersController implements Controller<void> {
   constructor(private readonly loadCharacters: LoadCharacters) {}

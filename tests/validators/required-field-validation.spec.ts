@@ -10,17 +10,17 @@ const makeSut = (): RequiredFieldValidation => {
 }
 
 describe('RequiredFieldValidation', () => {
-  it ('Should return a MissingParamError if validation exists', () => {
+  it('Should return a MissingParamError if validation exists', () => {
     const sut = makeSut()
 
     const error = sut.validate({
       invalidField: faker.random.word()
     })
 
-    expect(error).toEqual(new MissingParamError(field));
+    expect(error).toEqual(new MissingParamError(field))
   })
 
-  it ('Should not return if validation succeeds', () => {
+  it('Should not return if validation succeeds', () => {
     const sut = makeSut()
 
     const error = sut.validate({

@@ -7,15 +7,12 @@ import faker from 'faker'
 const field = faker.random.word()
 
 type SutTypes = {
-  sut: ValidationComposite;
+  sut: ValidationComposite
   validationSpies: ValidationSpy[]
 }
 
 const makeSut = (): SutTypes => {
-  const validationSpies = [
-    new ValidationSpy(),
-    new ValidationSpy()
-  ]
+  const validationSpies = [new ValidationSpy(), new ValidationSpy()]
 
   const sut = new ValidationComposite(validationSpies)
 
@@ -25,8 +22,8 @@ const makeSut = (): SutTypes => {
   }
 }
 
-describe("Validation Composite", () => {
-  it ('Should return an error if any validation fails', () => {
+describe('Validation Composite', () => {
+  it('Should return an error if any validation fails', () => {
     const { sut, validationSpies } = makeSut()
     validationSpies[1].error = new MissingParamError(field)
 

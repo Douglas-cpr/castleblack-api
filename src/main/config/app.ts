@@ -10,4 +10,3 @@ export const setupApp = (): Express => {
   setupRoutes(app)
   return app
 }
-

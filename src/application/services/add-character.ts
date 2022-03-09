@@ -1,7 +1,8 @@
 import { AddCharacter } from '@/domain/usecases'
 import { AddCharacterRepository } from '@/application/contracts'
 import { Character } from '@/domain/entities'
-import { CharacterModel } from '../models'
+import { CharacterModel } from '@/application/models'
+import { InvalidHealthParamError } from '@/application/errors'
 
 export class AddCharacterService implements AddCharacter {
   constructor(
@@ -9,6 +10,10 @@ export class AddCharacterService implements AddCharacter {
   ) {}
 
   async add(character: Character): Promise<CharacterModel> {
+    if (character.health > 100 || character.health <= 0) {
+      throw new InvalidHealthParamError()
+    }
+
     const createdCharacter = await this.addCharacterRepository.add(character)
     return createdCharacter
   }

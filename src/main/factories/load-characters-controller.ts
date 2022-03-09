@@ -5,6 +5,6 @@ import { Controller } from '@/presentation/contracts'
 
 export const makeLoadCharactersController = (): Controller<void> => {
   const repo = new FakeLoadCharacters()
-  const loadCharacters = new LoadCharactersService(repo)
-  return new LoadCharactersController(loadCharacters)
+  const service = new LoadCharactersService(repo)
+  return new LoadCharactersController(service)
 }

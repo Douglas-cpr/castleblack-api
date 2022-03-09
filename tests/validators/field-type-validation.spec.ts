@@ -1,8 +1,6 @@
 import { FieldTypeValidation } from '@/validators'
 import { InvalidTypeParamError } from '@/presentation/errors'
 
-
-
 const makeSut = (type: string): FieldTypeValidation => {
   const sut = new FieldTypeValidation('any_field', type)
   return sut

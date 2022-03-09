@@ -7,6 +7,6 @@ import { makeAddCharacterValidation } from '@/main/factories'
 
 export const makeAddCharacterController = (): Controller<CharacterModel> => {
   const repo = new FakeAddCharacterRepository()
-  const newCharacter = new AddCharacterService(repo)
-  return new AddCharacterController(makeAddCharacterValidation(), newCharacter)
+  const service = new AddCharacterService(repo)
+  return new AddCharacterController(makeAddCharacterValidation(), service)
 }

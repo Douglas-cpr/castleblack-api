@@ -1,7 +1,9 @@
 import { Router } from 'express'
-import { adaptRoute } from '@/main/adapters/express-router'
-import { makeLoadCharactersController } from '@/main/factories/load-characters-controller'
-import { makeAddCharacterController } from '@/main/factories/add-character-controller'
+import { adaptRoute } from '@/main/adapters'
+import {
+  makeLoadCharactersController,
+  makeAddCharacterController
+} from '@/main/factories'
 
 export default (router: Router): void => {
   router.get('/character', adaptRoute(makeLoadCharactersController()))

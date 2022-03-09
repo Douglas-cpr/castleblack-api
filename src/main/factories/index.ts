@@ -1,3 +1,6 @@
 export * from './add-character-controller'
 export * from './load-characters-controller'
 export * from './add-character-validation'
+export * from './add-item-controller'
+export * from './add-item-validation'
+export * from './load-items-controller'

@@ -19,6 +19,7 @@ export class AddCharacterController implements Controller<Character> {
       }
 
       const newCharacter = await this.addCharacter.add(character)
+
       return ok(newCharacter)
     } catch (e) {
       return serverError(e)

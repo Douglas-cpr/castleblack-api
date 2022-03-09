@@ -11,7 +11,7 @@ describe('Character Routers', () => {
   })
 
   describe('GET /api/character', () => {
-    it('should return status code 200 on success', async() => {
+    it('should return status code 200 on success', async () => {
       const httpResponse = await request(app).get('/api/character')
 
       expect(httpResponse.status).toBe(200)
@@ -19,10 +19,10 @@ describe('Character Routers', () => {
   })
 
   describe('POST /api/character', () => {
-    it('should return status code 200 on success', async() => {
+    it('should return status code 200 on success', async () => {
       const httpResponse = await request(app).post('/api/character').send({
         name: 'any_name',
-        age: 20,
+        age: 20
       })
 
       expect(httpResponse.status).toBe(200)
@@ -30,7 +30,7 @@ describe('Character Routers', () => {
 
     it('should return status code 400 if parameters are missing', async () => {
       const httpResponse = await request(app).post('/api/character').send({
-        age: 20,
+        age: 20
       })
 
       expect(httpResponse.status).toBe(400)
@@ -39,7 +39,7 @@ describe('Character Routers', () => {
     it('should return status code 400 if parameters are invalid', async () => {
       const httpResponse = await request(app).post('/api/character').send({
         name: 'any_name',
-        age: '20x',
+        age: '20x'
       })
 
       expect(httpResponse.status).toBe(400)
@@ -48,7 +48,7 @@ describe('Character Routers', () => {
     it('should return a new character on success', async () => {
       const httpResponse = await request(app).post('/api/character').send({
         name: 'any_name',
-        age: 20,
+        age: 20
       })
 
       expect(httpResponse.body).toHaveProperty('id')

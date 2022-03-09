@@ -5,13 +5,13 @@ import {
 } from '@/validators'
 import { Validation } from '@/presentation/contracts'
 
-export const makeAddCharacterValidation = (): ValidationComposite => {
+export const makeAddItemValidation = (): ValidationComposite => {
   const validations: Validation[] = []
   const fields = {
-    name: {
+    description: {
       type: 'string'
     },
-    age: {
+    damage: {
       type: 'number'
     }
   }

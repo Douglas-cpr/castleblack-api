@@ -4,7 +4,7 @@ import { InvalidTypeParamError } from '@/presentation/errors'
 export class FieldTypeValidation implements Validation {
   constructor(
     private readonly fieldName: string,
-    private readonly type: string,
+    private readonly type: string
   ) {}
 
   validate(input: any): Error {

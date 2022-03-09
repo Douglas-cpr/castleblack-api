@@ -1,5 +1,7 @@
-import app from '@/main/config/app'
+import { setupApp } from '@/main/config/app'
 import { env } from '@/main/config/env'
+
+const app = setupApp()
 
 app.listen(env.port, () =>
   console.log(`Server running at: http://localhost:${env.port}`)

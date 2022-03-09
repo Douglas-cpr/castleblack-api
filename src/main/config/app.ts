@@ -1,11 +1,13 @@
 import { setupRoutes } from '@/main/config/routes'
 import bodyParser from 'body-parser'
 
-import express from 'express'
+import express, { Express } from 'express'
 
-const app = express()
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-setupRoutes(app)
+export const setupApp = (): Express => {
+  const app = express()
+  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.json())
+  setupRoutes(app)
+  return app
+}
 
-export default app

@@ -1,10 +1,23 @@
-import { ValidationComposite, RequiredFieldValidation } from '@/validators'
+import { ValidationComposite, RequiredFieldValidation, FieldTypeValidation } from '@/validators'
 import { Validation } from '@/presentation/contracts'
 
 export const makeAddCharacterValidation = (): ValidationComposite => {
   const validations: Validation[] = []
-  for (const field of ['name', 'age']) {
-    validations.push(new RequiredFieldValidation(field))
+  const fields = {
+    name: {
+      type: 'string'
+    },
+    age: {
+      type: 'number'
+    }
   }
+
+  for (const field of Object.keys(fields)) {
+    const type = fields[field].type
+
+    validations.push(new RequiredFieldValidation(field))
+    validations.push(new FieldTypeValidation(field, type))
+  }
+
   return new ValidationComposite(validations)
 }

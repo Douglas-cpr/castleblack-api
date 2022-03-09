@@ -1,1 +1,1 @@
-export * from './invalid-health-param-error'
+export * from './health-param-out-of-range'

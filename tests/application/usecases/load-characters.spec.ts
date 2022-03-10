@@ -26,7 +26,7 @@ describe('Load characters usecase', () => {
     expect(characters).toEqual(loadCharactersSpy.result)
   })
 
-  it('Should call loadCharactersRepository', async () => {
+  it('should call loadCharactersRepository', async () => {
     const { sut, loadCharactersSpy } = makeSut()
 
     await sut.load()
@@ -34,7 +34,7 @@ describe('Load characters usecase', () => {
     expect(loadCharactersSpy.result).toBeTruthy()
   })
 
-  it('Should throw error if loadCharactersRepository throws', async () => {
+  it('should throw error if loadCharactersRepository throws', async () => {
     const { sut, loadCharactersSpy } = makeSut()
 
     jest.spyOn(loadCharactersSpy, 'load').mockImplementation(throwError)

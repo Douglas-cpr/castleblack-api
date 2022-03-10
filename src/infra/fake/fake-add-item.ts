@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 export class FakeAddItemRepository implements AddItemRepository {
   async add(item: Item): Promise<ItemModel> {
-    console.log(item)
     const newItemId = uuidv4()
     const newItem: ItemModel = {
       id: newItemId,

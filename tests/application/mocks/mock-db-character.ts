@@ -1,7 +1,8 @@
-import { AddCharacterRepository } from '@/application/contracts/character'
+import { AddCharacterRepository } from '@/application/contracts'
 import { Character } from '@/domain/entities'
+import { CharacterModel } from '@/application/models'
+
 import faker from 'faker'
-import { CharacterModel } from '../models'
 
 export class AddCharacterRepositorySpy implements AddCharacterRepository {
   public addCharacterCalledWith: Character
@@ -9,7 +10,7 @@ export class AddCharacterRepositorySpy implements AddCharacterRepository {
   public async add(character: Character): Promise<CharacterModel> {
     this.addCharacterCalledWith = character
 
-    const addCharacterReturnValue = {
+    const addCharacterReturnValue: CharacterModel = {
       id: faker.datatype.uuid(),
       ...this.addCharacterCalledWith,
       createdAt: new Date()

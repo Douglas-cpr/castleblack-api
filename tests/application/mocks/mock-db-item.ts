@@ -1,5 +1,5 @@
-import { AddItemRepository } from "@/application/contracts";
-import { Item } from "@/domain/entities";
+import { AddItemRepository } from '@/application/contracts'
+import { Item } from '@/domain/entities'
 import { ItemModel } from '@/application/models'
 
 import faker from 'faker'

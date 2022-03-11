@@ -1,7 +1,7 @@
-import { ItemModel } from "@/application/models";
-import { Item } from "@/domain/entities";
-import { AddItem, LoadItems } from "@/domain/usecases";
-import { mockItemsModel } from "@/tests/domain/mocks/mock-item";
+import { ItemModel } from '@/application/models'
+import { Item } from '@/domain/entities'
+import { AddItem, LoadItems } from '@/domain/usecases'
+import { mockItemsModel } from '@/tests/domain/mocks/mock-item'
 
 export class LoadItemsSpy implements LoadItems {
   result: ItemModel[]

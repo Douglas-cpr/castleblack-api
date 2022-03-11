@@ -10,7 +10,6 @@ export class AddCharacterService implements AddCharacter {
   ) {}
 
   async add(character: Character): Promise<CharacterModel> {
-    
     if (character.health > 100 || character.health <= 0) {
       throw new HealthParamOutOfRange()
     }

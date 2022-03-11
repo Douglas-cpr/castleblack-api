@@ -2,6 +2,7 @@ import { AddCharacterService } from '@/application/services'
 import { mockAddCharacterParams } from '@/tests/domain/mocks'
 import { AddCharacterRepositorySpy } from '@/tests/application/mocks'
 import { throwError } from '@/tests/domain/mocks/test-helpers'
+import { HealthParamOutOfRange } from '@/application/errors'
 
 type SutTypes = {
   sut: AddCharacterService
@@ -46,6 +47,26 @@ describe('Add character usecase', () => {
     const newCharacter = await sut.add(character)
 
     expect(newCharacter.createdAt).toEqual(createdAt)
+  })
+
+  it('should throw HealthParamOutOfRange if health param is greather than 100', async () => {
+    const { sut } = makeSut()
+    const character = mockAddCharacterParams()
+    character.health = 101
+
+    const promise = sut.add(character)
+
+    await expect(promise).rejects.toBeInstanceOf(HealthParamOutOfRange)
+  })
+
+  it('should throw HealthParamOutOfRange if health param is smallest than 1', async () => {
+    const { sut } = makeSut()
+    const character = mockAddCharacterParams()
+    character.health = 0
+
+    const promise = sut.add(character)
+
+    await expect(promise).rejects.toBeInstanceOf(HealthParamOutOfRange)
   })
 
   it('should throw error if AddCharacter throws', async () => {

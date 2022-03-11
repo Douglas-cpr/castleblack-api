@@ -1,5 +1,5 @@
-import { ItemModel } from "@/application/models";
-import { Item } from "@/domain/entities";
+import { ItemModel } from '@/application/models'
+import { Item } from '@/domain/entities'
 
 import faker from 'faker'
 
@@ -17,5 +17,5 @@ export const mockItemsModel = (): ItemModel[] => [
 
 export const mockAddItemParams = (): Item => ({
   description: faker.random.word(),
-  damage: faker.datatype.number({ min: 1})
+  damage: faker.datatype.number({ min: 1 })
 })

@@ -1,7 +1,7 @@
-import { AddItemRepositorySpy } from "@/tests/application/mocks"
-import { AddItemService } from "@/application/services"
-import { mockAddItemParams } from "@/tests/domain/mocks/mock-item"
-import { throwError } from "@/tests/domain/mocks/test-helpers"
+import { AddItemRepositorySpy } from '@/tests/application/mocks'
+import { AddItemService } from '@/application/services'
+import { mockAddItemParams } from '@/tests/domain/mocks/mock-item'
+import { throwError } from '@/tests/domain/mocks/test-helpers'
 
 type SutTypes = {
   sut: AddItemService
@@ -18,9 +18,8 @@ const makeSut = (): SutTypes => {
   }
 }
 
-
 describe('Add item usecase', () => {
-  it ('Should return new item on success', async () => {
+  it('Should return new item on success', async () => {
     const { sut } = makeSut()
     const item = mockAddItemParams()
 
@@ -29,7 +28,7 @@ describe('Add item usecase', () => {
     expect(newItem).toMatchObject(item)
   })
 
-  it ('should be return new item with id and created date', async () => {
+  it('should be return new item with id and created date', async () => {
     const { sut } = makeSut()
     const item = mockAddItemParams()
 
@@ -39,7 +38,7 @@ describe('Add item usecase', () => {
     expect(newItem.createdAt).toBeInstanceOf(Date)
   })
 
-  it ('should throw error if addItem throws', async () => {
+  it('should throw error if addItem throws', async () => {
     const { sut, addItemRepositorySpy } = makeSut()
 
     jest.spyOn(addItemRepositorySpy, 'add').mockImplementation(throwError)

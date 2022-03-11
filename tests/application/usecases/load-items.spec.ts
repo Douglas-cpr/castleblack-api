@@ -1,7 +1,6 @@
-import { LoadItemsSpy } from "@/tests/presentation/mocks"
-import { LoadItemsService } from "@/application/services"
-import { throwError } from "@/tests/domain/mocks/test-helpers"
-
+import { LoadItemsSpy } from '@/tests/presentation/mocks'
+import { LoadItemsService } from '@/application/services'
+import { throwError } from '@/tests/domain/mocks/test-helpers'
 
 type SutTypes = {
   sut: LoadItemsService

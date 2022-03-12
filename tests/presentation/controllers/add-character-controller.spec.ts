@@ -37,13 +37,13 @@ const makeSut = (): SutTypes => {
 }
 
 describe('AddCharacter Controller', () => {
-  it('AddCharacterController should be defined', () => {
+  it('addCharacterController should be defined', () => {
     const { addCharacterController } = makeSut()
 
     expect(addCharacterController).toBeDefined()
   })
 
-  it('Should return a character with correct values', async () => {
+  it('should return a character with correct values', async () => {
     const { addCharacterController } = makeSut()
     const params = addCharacterParams()
 
@@ -52,7 +52,7 @@ describe('AddCharacter Controller', () => {
     expect(httpResponse.body).toMatchObject(params)
   })
 
-  it('Should call validation with correct params', () => {
+  it('should call validation with correct params', () => {
     const { addCharacterController, validationSpy } = makeSut()
     const params = addCharacterParams()
 
@@ -61,7 +61,7 @@ describe('AddCharacter Controller', () => {
     expect(validationSpy.input).toEqual(params)
   })
 
-  it('Should return status 500 if AddCharacter throws', async () => {
+  it('should return status 500 if AddCharacter throws', async () => {
     const { addCharacterController, addCharacterSpy } = makeSut()
     jest.spyOn(addCharacterSpy, 'add').mockImplementationOnce(throwError)
 
@@ -72,8 +72,9 @@ describe('AddCharacter Controller', () => {
     expect(httpResponse).toEqual(serverError(new Error()))
   })
 
-  it('should 200 on success', async () => {
+  it('should return status 200 on success', async () => {
     const { addCharacterController } = makeSut()
+    
     const httpResponse = await addCharacterController.handle(
       addCharacterParams()
     )

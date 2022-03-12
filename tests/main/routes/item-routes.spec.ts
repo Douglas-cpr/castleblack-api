@@ -36,5 +36,16 @@ describe('Item Routers', () => {
 
       expect(httpResponse.status).toBe(400)
     })
+
+    it('should return a new item on success', async () => {
+      const httpResponse = await request(app).post('/api/item').send({
+        description: 'Fire knife',
+        damage: 99
+      })
+
+      expect(httpResponse.body).toHaveProperty('id')
+      expect(httpResponse.body).toHaveProperty('description')
+      expect(httpResponse.body).toHaveProperty('damage')
+    })
   })
 })

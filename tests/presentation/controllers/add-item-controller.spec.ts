@@ -1,9 +1,9 @@
-import { Item } from "@/domain/entities";
-import { AddItemController } from "@/presentation/controllers";
-import { ValidationSpy } from "@/tests/presentation/mocks";
-import { AddItemSpy } from "@/tests/presentation/mocks";
-import { serverError } from "@/presentation/utils";
-import { throwError } from "@/tests/domain/mocks/test-helpers";
+import { Item } from '@/domain/entities'
+import { AddItemController } from '@/presentation/controllers'
+import { ValidationSpy } from '@/tests/presentation/mocks'
+import { AddItemSpy } from '@/tests/presentation/mocks'
+import { serverError } from '@/presentation/utils'
+import { throwError } from '@/tests/domain/mocks/test-helpers'
 
 import faker from 'faker'
 
@@ -19,12 +19,9 @@ type SutTypes = {
 }
 
 const makeSut = (): SutTypes => {
-  const addItemSpy = new AddItemSpy();
+  const addItemSpy = new AddItemSpy()
   const validationSpy = new ValidationSpy()
-  const addItemController = new AddItemController(
-    validationSpy,
-    addItemSpy
-  )
+  const addItemController = new AddItemController(validationSpy, addItemSpy)
 
   return {
     addItemController,
@@ -62,17 +59,16 @@ describe('AddItem Controller', () => {
     const { addItemController, addItemSpy } = makeSut()
     jest.spyOn(addItemSpy, 'add').mockImplementation(throwError)
 
-    const httpResponse = await addItemController.handle(addItemParams());
+    const httpResponse = await addItemController.handle(addItemParams())
 
     expect(httpResponse).toEqual(serverError(new Error()))
   })
 
   it('should return status 200 on success', async () => {
-      const { addItemController } = makeSut()
+    const { addItemController } = makeSut()
 
-      const httpResponse = await addItemController.handle(addItemParams())
+    const httpResponse = await addItemController.handle(addItemParams())
 
-      expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.statusCode).toBe(200)
   })
-
 })

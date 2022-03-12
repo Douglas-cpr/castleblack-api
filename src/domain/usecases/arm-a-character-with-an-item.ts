@@ -1,5 +1,10 @@
-import { Character } from '../entities'
+import { Character } from '@/domain/entities'
 
+
+export type ArmACharacterWithAnItemParams = {
+  characterId: string,
+  itemId: string
+}
 export interface ArmACharacterWithAnItem {
-  arm: (characterId: string, itemId: string) => Promise<Character>
+  arm: ({ characterId, itemId }: ArmACharacterWithAnItemParams) => Promise<Character>
 }

@@ -1,9 +1,9 @@
 import { ItemModel } from '@/application/models'
-import { AddItemService } from '@/application/services/add-item'
-import { FakeAddItemRepository } from '@/infra/fake/fake-add-item'
+import { AddItemService } from '@/application/services'
+import { FakeAddItemRepository } from '@/infra/fake'
 import { Controller } from '@/presentation/contracts'
-import { AddItemController } from '@/presentation/controllers/add-item'
-import { makeAddItemValidation } from './add-item-validation'
+import { AddItemController } from '@/presentation/controllers'
+import { makeAddItemValidation } from '@/main/factories'
 
 export const makeAddItemController = (): Controller<ItemModel> => {
   const repo = new FakeAddItemRepository()

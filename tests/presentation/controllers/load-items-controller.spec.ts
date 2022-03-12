@@ -1,7 +1,5 @@
-import { LoadItemsController } from "@/presentation/controllers";
-import { mockItemsModel } from "@/tests/domain/mocks/mock-item";
-import { LoadItemsSpy } from "@/tests/presentation/mocks";
-
+import { LoadItemsController } from '@/presentation/controllers'
+import { LoadItemsSpy } from '@/tests/presentation/mocks'
 
 type SutTypes = {
   loadItemsController: LoadItemsController
@@ -12,7 +10,7 @@ const makeSut = (): SutTypes => {
   const loadItemsSpy = new LoadItemsSpy()
   const loadItemsController = new LoadItemsController(loadItemsSpy)
 
-  return{
+  return {
     loadItemsController,
     loadItemsSpy
   }
@@ -27,7 +25,7 @@ describe('LoadItems Controller', () => {
 
   it('should return a list of items on success', async () => {
     const { loadItemsController, loadItemsSpy } = makeSut()
-    
+
     const httpResponse = await loadItemsController.handle()
 
     expect(httpResponse.body).toEqual(loadItemsSpy.result)
@@ -42,4 +40,3 @@ describe('LoadItems Controller', () => {
     expect(httpResponse.statusCode).toEqual(500)
   })
 })
-

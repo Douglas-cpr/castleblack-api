@@ -74,7 +74,7 @@ describe('AddCharacter Controller', () => {
 
   it('should return status 200 on success', async () => {
     const { addCharacterController } = makeSut()
-    
+
     const httpResponse = await addCharacterController.handle(
       addCharacterParams()
     )

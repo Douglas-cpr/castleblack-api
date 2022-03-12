@@ -1,19 +1,14 @@
-import {
-  ValidationComposite,
-  RequiredFieldValidation
-} from '@/validators'
+import { ValidationComposite, RequiredFieldValidation } from '@/validators'
 import { Validation } from '@/presentation/contracts'
 
-export const makeArmACharacterWithAnItemValidation = (): ValidationComposite => {
-  const validations: Validation[] = []
-  const fields = [
-    'characterId',
-    'itemId'
-  ]
+export const makeArmACharacterWithAnItemValidation =
+  (): ValidationComposite => {
+    const validations: Validation[] = []
+    const fields = ['characterId', 'itemId']
 
-  for (const field in fields) {
-    validations.push(new RequiredFieldValidation(field))
+    for (const field in fields) {
+      validations.push(new RequiredFieldValidation(field))
+    }
+
+    return new ValidationComposite(validations)
   }
-
-  return new ValidationComposite(validations)
-}

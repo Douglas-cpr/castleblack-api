@@ -1,6 +1,9 @@
-import { ArmACharacterWithAnItem, ArmACharacterWithAnItemParams } from "@/domain/usecases";
-import { Validation } from "@/presentation/contracts";
-import { badRequest, ok, serverError } from "@/presentation/utils";
+import {
+  ArmACharacterWithAnItem,
+  ArmACharacterWithAnItemParams
+} from '@/domain/usecases'
+import { Validation } from '@/presentation/contracts'
+import { badRequest, ok, serverError } from '@/presentation/utils'
 
 export class ArmACharacterWithAnItemController {
   constructor(
@@ -16,7 +19,10 @@ export class ArmACharacterWithAnItemController {
         return badRequest(error)
       }
 
-      const character = await this.armACharacterWithAnItem.arm({ characterId, itemId })
+      const character = await this.armACharacterWithAnItem.arm({
+        characterId,
+        itemId
+      })
       return ok(character)
     } catch (e) {
       return serverError(e)

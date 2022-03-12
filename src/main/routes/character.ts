@@ -9,5 +9,8 @@ import {
 export default (router: Router): void => {
   router.get('/character', adaptRoute(makeLoadCharactersController()))
   router.post('/character', adaptRoute(makeAddCharacterController()))
-  router.put('/character/arm-character', adaptRoute(makeArmACharacterWithAnItemController()))
+  router.put(
+    '/character/arm-character',
+    adaptRoute(makeArmACharacterWithAnItemController())
+  )
 }

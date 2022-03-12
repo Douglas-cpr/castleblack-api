@@ -29,10 +29,8 @@ describe('LoadCharacters Controller', () => {
     const { loadCharactersController, loadCharactersSpy } = makeSut()
 
     const httpResponse = await loadCharactersController.handle()
-    const mockedCharacters = await loadCharactersSpy.load()
-    const loadedCharactersLength = httpResponse.body.length
 
-    expect(loadedCharactersLength).toEqual(mockedCharacters.length)
+    expect(httpResponse.body).toEqual(loadCharactersSpy.result)
   })
 
   it('should throw error with status code 500 if LoadCharactersRepository throw error', async () => {

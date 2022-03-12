@@ -1,4 +1,5 @@
 import { LoadItemsController } from "@/presentation/controllers";
+import { mockItemsModel } from "@/tests/domain/mocks/mock-item";
 import { LoadItemsSpy } from "@/tests/presentation/mocks";
 
 
@@ -26,12 +27,10 @@ describe('LoadItems Controller', () => {
 
   it('should return a list of items on success', async () => {
     const { loadItemsController, loadItemsSpy } = makeSut()
-
+    
     const httpResponse = await loadItemsController.handle()
-    const mockedItems = await loadItemsSpy.load()
-    const loadedItemsLength = httpResponse.body.length
 
-    expect(loadedItemsLength).toEqual(mockedItems.length)
+    expect(httpResponse.body).toEqual(loadItemsSpy.result)
   })
 
   it('should throw error with status code 500 if LoadItemsRepository throws', async () => {

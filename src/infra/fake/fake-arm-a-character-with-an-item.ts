@@ -11,15 +11,17 @@ export class FakeArmACharacterWithAnItemRepository
     characterId,
     itemId
   }: ArmACharacterWithAnItemParams): Promise<CharacterModel> {
-    const character = characters.find((character) => character.id == characterId)
+    const character = characters.find(
+      (character) => character.id == characterId
+    )
     const item = items.find((item) => item.id == itemId)
 
     if (!character) {
-      throw new NotFound('character', characterId);
+      throw new NotFound('character', characterId)
     }
-    
+
     if (!item) {
-      throw new NotFound('item');
+      throw new NotFound('item', itemId)
     }
 
     character.weapon = itemId

@@ -6,7 +6,7 @@ export const makeArmACharacterWithAnItemValidation =
     const validations: Validation[] = []
     const fields = ['characterId', 'itemId']
 
-    for (const field in fields) {
+    for (const field of fields) {
       validations.push(new RequiredFieldValidation(field))
     }
 

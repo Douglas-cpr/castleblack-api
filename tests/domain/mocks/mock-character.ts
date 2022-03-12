@@ -1,5 +1,6 @@
 import { CharacterModel } from '@/application/models'
 import { Character } from '@/domain/entities'
+import { ArmACharacterWithAnItemParams } from '@/domain/usecases'
 
 import faker from 'faker'
 
@@ -25,3 +26,9 @@ export const mockAddCharacterParams = (): Character => ({
   weapon: null,
   bag: []
 })
+
+export const mockArmACharacterWithAnItemParams =
+  (): ArmACharacterWithAnItemParams => ({
+    characterId: faker.datatype.uuid(),
+    itemId: faker.datatype.uuid()
+  })

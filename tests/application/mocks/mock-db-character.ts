@@ -1,6 +1,10 @@
-import { AddCharacterRepository } from '@/application/contracts'
+import {
+  AddCharacterRepository,
+  ArmACharacterWithAnItemRepository
+} from '@/application/contracts'
 import { Character } from '@/domain/entities'
 import { CharacterModel } from '@/application/models'
+import { ArmACharacterWithAnItemParams } from '@/domain/usecases'
 
 import faker from 'faker'
 
@@ -17,5 +21,30 @@ export class AddCharacterRepositorySpy implements AddCharacterRepository {
     }
 
     return addCharacterReturnValue
+  }
+}
+
+export class ArmACharacterWithAnItemRepositorySpy
+  implements ArmACharacterWithAnItemRepository
+{
+  public armCharacterCalledWit: ArmACharacterWithAnItemParams
+
+  public async arm({
+    characterId,
+    itemId
+  }: ArmACharacterWithAnItemParams): Promise<CharacterModel> {
+    this.armCharacterCalledWit = { characterId, itemId }
+
+    const armCharacterWithAnItemReturnValue: CharacterModel = {
+      id: characterId,
+      name: faker.name.firstName(),
+      age: faker.datatype.number({ min: 1 }),
+      health: faker.datatype.number({ min: 1, max: 100 }),
+      weapon: itemId,
+      bag: [],
+      createdAt: new Date()
+    }
+
+    return armCharacterWithAnItemReturnValue
   }
 }

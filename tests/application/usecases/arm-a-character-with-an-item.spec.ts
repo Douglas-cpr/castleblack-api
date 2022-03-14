@@ -44,7 +44,7 @@ describe('Add item usecase', () => {
     expect(character.id).toBe(params.characterId)
   })
 
-  it('should throw error if addItem throws', async () => {
+  it('should throw error if armCharacter throws', async () => {
     const { sut, armCharacterWithAnItemRepositorySpy } = makeSut()
 
     jest

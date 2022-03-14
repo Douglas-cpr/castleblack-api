@@ -3,7 +3,7 @@ import { AddItemController } from '@/presentation/controllers'
 import { ValidationSpy } from '@/tests/presentation/mocks'
 import { AddItemSpy } from '@/tests/presentation/mocks'
 import { serverError } from '@/presentation/utils'
-import { throwError } from '@/tests/domain/mocks/test-helpers'
+import { throwError } from '@/tests/domain/mocks'
 
 import faker from 'faker'
 

@@ -3,7 +3,8 @@ import {
   ArmACharacterWithAnItemParams
 } from '@/domain/usecases'
 import { Validation } from '@/presentation/contracts'
-import { badRequest, ok, serverError } from '@/presentation/utils'
+import { badRequest, ok, serverError, notFound } from '@/presentation/utils'
+import { NotFoundError } from '@/presentation/errors/not-found-error'
 
 export class ArmACharacterWithAnItemController {
   constructor(
@@ -23,6 +24,11 @@ export class ArmACharacterWithAnItemController {
         characterId,
         itemId
       })
+
+      if (!character) {
+        return notFound(new NotFoundError())
+      }
+
       return ok(character)
     } catch (e) {
       return serverError(e)

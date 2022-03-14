@@ -1,15 +1,17 @@
-import { makeAddCharacterValidation } from '@/main/factories'
+import { makeArmACharacterWithAnItemValidation } from '@/main/factories'
 import { Validation } from '@/presentation/contracts'
 import { RequiredFieldValidation, ValidationComposite } from '@/validators'
 
-jest.mock('@/main/factories/validation-composite')
+jest.mock('@/validators/validation-composite')
 
 describe('AddCharacterValidation Factory', () => {
   it('Should call validation composite with all validations', async () => {
-    makeAddCharacterValidation()
-    const validations: Validation[] = []
+    makeArmACharacterWithAnItemValidation()
 
-    for (const field of ['name', 'age']) {
+    const validations: Validation[] = []
+    const fields = ['characterId', 'itemId']
+
+    for (const field of fields) {
       validations.push(new RequiredFieldValidation(field))
     }
 

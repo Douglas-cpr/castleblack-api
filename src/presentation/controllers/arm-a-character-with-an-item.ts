@@ -2,11 +2,13 @@ import {
   ArmACharacterWithAnItem,
   ArmACharacterWithAnItemParams
 } from '@/domain/usecases'
-import { Validation } from '@/presentation/contracts'
+import { Controller, Validation } from '@/presentation/contracts'
 import { badRequest, ok, serverError, notFound } from '@/presentation/utils'
 import { NotFoundError } from '@/presentation/errors/not-found-error'
 
-export class ArmACharacterWithAnItemController {
+export class ArmACharacterWithAnItemController
+  implements Controller<ArmACharacterWithAnItemParams>
+{
   constructor(
     private readonly validation: Validation,
     private readonly armACharacterWithAnItem: ArmACharacterWithAnItem

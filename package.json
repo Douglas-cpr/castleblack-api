@@ -4,7 +4,7 @@
   "description": "This is a Game of Thrones inspired REST API game",
   "main": "app.ts",
   "scripts": {
-    "start:dev": "yarn prettier-format; ts-node-dev -r tsconfig-paths/register src/main/server.ts ts-node",
+    "start:dev": "yarn format; ts-node-dev -r tsconfig-paths/register src/main/server.ts ts-node",
     "test": "jest --watch",
     "test:ver": "jest --verbose",
     "format": "prettier --config .prettierrc '**/**/*.ts' --write"

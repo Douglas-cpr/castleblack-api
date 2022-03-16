@@ -49,7 +49,7 @@ describe('Add item usecase', () => {
     jest
       .spyOn(armCharacterWithAnItemRepositorySpy, 'arm')
       .mockImplementation(throwError)
-      
+
     const promise = sut.arm(mockArmACharacterWithAnItemParams())
 
     await expect(promise).rejects.toThrow()

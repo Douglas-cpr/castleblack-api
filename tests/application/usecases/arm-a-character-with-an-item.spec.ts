@@ -22,7 +22,7 @@ const makeSut = (): SutTypes => {
 }
 
 describe('Add item usecase', () => {
-  it('Should return new character on success', async () => {
+  it('should return new character on success', async () => {
     const { sut } = makeSut()
     const params = mockArmACharacterWithAnItemParams()
 
@@ -46,10 +46,10 @@ describe('Add item usecase', () => {
 
   it('should throw error if armCharacter throws', async () => {
     const { sut, armCharacterWithAnItemRepositorySpy } = makeSut()
-
     jest
       .spyOn(armCharacterWithAnItemRepositorySpy, 'arm')
       .mockImplementation(throwError)
+      
     const promise = sut.arm(mockArmACharacterWithAnItemParams())
 
     await expect(promise).rejects.toThrow()

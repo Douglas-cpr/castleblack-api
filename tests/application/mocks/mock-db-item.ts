@@ -1,4 +1,7 @@
-import { AddItemRepository } from '@/application/contracts'
+import {
+  AddItemRepository,
+  LoadItemByIdRepository
+} from '@/application/contracts'
 import { Item } from '@/domain/entities'
 import { ItemModel } from '@/application/models'
 
@@ -17,5 +20,22 @@ export class AddItemRepositorySpy implements AddItemRepository {
     }
 
     return addItemReturnValue
+  }
+}
+
+export class LoadItemByIdRepositorySpy implements LoadItemByIdRepository {
+  public id: string
+
+  async load(id: string): Promise<ItemModel> {
+    this.id = id
+
+    const getItemByIdReturnValue: ItemModel = {
+      id,
+      description: faker.random.word(),
+      damage: faker.datatype.number({ min: 1 }),
+      createdAt: new Date()
+    }
+
+    return getItemByIdReturnValue
   }
 }

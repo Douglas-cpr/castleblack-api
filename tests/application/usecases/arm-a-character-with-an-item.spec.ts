@@ -1,6 +1,6 @@
 import { ArmACharacterWithAnItemRepositorySpy } from '@/tests/application/mocks'
 import { ArmACharacterWithAnItemService } from '@/application/services'
-import { throwError } from '@/tests/domain/mocks/test-helpers'
+import { throwError } from '@/tests/domain/mocks'
 import { mockArmACharacterWithAnItemParams } from '@/tests/domain/mocks'
 
 type SutTypes = {

@@ -125,4 +125,18 @@ describe('Character Routers', () => {
       expect(httpResponse.body).toHaveProperty('age')
     })
   })
+
+  describe('GET api/character/:id', () => {
+    it('should return status 200 on success', async () => {
+      const httpResponse = await request(app).get('/api/character/1')
+
+      expect(httpResponse.status).toBe(200)
+    })
+
+    it('should return status code 404 if not found', async () => {
+      const httpResponse = await request(app).get('/api/character/any_id')
+
+      expect(httpResponse.status).toBe(404)
+    })
+  })
 })

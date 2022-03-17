@@ -40,7 +40,7 @@ describe('Load item by id usecase', () => {
 
       await sut.load(id)
 
-      expect(loadItemByIdRepositorySpy.id).toEqual(id)
+      expect(loadItemByIdRepositorySpy.loadItemByIdCalledWith).toEqual(id)
     })
 
   it('should return character with correct id', async () => {

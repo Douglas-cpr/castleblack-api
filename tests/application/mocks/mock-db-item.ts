@@ -24,10 +24,10 @@ export class AddItemRepositorySpy implements AddItemRepository {
 }
 
 export class LoadItemByIdRepositorySpy implements LoadItemByIdRepository {
-  public id: string
+  public loadItemByIdCalledWith: string
 
   async load(id: string): Promise<ItemModel> {
-    this.id = id
+    this.loadItemByIdCalledWith = id
 
     const getItemByIdReturnValue: ItemModel = {
       id,

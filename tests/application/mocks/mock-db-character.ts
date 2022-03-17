@@ -1,6 +1,7 @@
 import {
   AddCharacterRepository,
-  ArmACharacterWithAnItemRepository
+  ArmACharacterWithAnItemRepository,
+  LoadCharacterByIdRepository
 } from '@/application/contracts'
 import { Character } from '@/domain/entities'
 import { CharacterModel } from '@/application/models'
@@ -27,13 +28,13 @@ export class AddCharacterRepositorySpy implements AddCharacterRepository {
 export class ArmACharacterWithAnItemRepositorySpy
   implements ArmACharacterWithAnItemRepository
 {
-  public armCharacterCalledWit: ArmACharacterWithAnItemParams
+  public armCharacterCalledWith: ArmACharacterWithAnItemParams
 
   public async arm({
     characterId,
     itemId
   }: ArmACharacterWithAnItemParams): Promise<CharacterModel> {
-    this.armCharacterCalledWit = { characterId, itemId }
+    this.armCharacterCalledWith = { characterId, itemId }
 
     const armCharacterWithAnItemReturnValue: CharacterModel = {
       id: characterId,
@@ -46,5 +47,27 @@ export class ArmACharacterWithAnItemRepositorySpy
     }
 
     return armCharacterWithAnItemReturnValue
+  }
+}
+
+export class LoadCharacterByIdRepositorySpy
+  implements LoadCharacterByIdRepository
+{
+  public loadCharacterByIdCalledWith: string
+
+  async load(id: string): Promise<CharacterModel> {
+    this.loadCharacterByIdCalledWith = id
+
+    const getCharacterByIdReturnValue: CharacterModel = {
+      id,
+      name: faker.name.firstName(),
+      age: faker.datatype.number({ min: 1 }),
+      health: faker.datatype.number({ min: 1, max: 100 }),
+      weapon: faker.datatype.uuid(),
+      bag: [],
+      createdAt: new Date()
+    }
+
+    return getCharacterByIdReturnValue
   }
 }

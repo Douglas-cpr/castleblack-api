@@ -3,7 +3,8 @@ import { adaptRoute } from '@/main/adapters'
 import {
   makeLoadCharactersController,
   makeAddCharacterController,
-  makeArmACharacterWithAnItemController
+  makeArmACharacterWithAnItemController,
+  makeLoadCharacterByIdController
 } from '@/main/factories'
 
 export default (router: Router): void => {
@@ -13,4 +14,5 @@ export default (router: Router): void => {
     '/character/arm-character',
     adaptRoute(makeArmACharacterWithAnItemController())
   )
+  router.get('/character/:id', adaptRoute(makeLoadCharacterByIdController()))
 }

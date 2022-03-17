@@ -1,7 +1,7 @@
 import { LoadItemById } from '@/domain/usecases'
 import { Controller, Validation } from '@/presentation/contracts'
 import { badRequest, ok, serverError, notFound } from '@/presentation/utils'
-import { NotFoundError } from '@/presentation/errors/not-found-error'
+import { NotFoundError } from '@/presentation/errors'
 
 export type LoadItemByIdControllerParams = {
   id: string

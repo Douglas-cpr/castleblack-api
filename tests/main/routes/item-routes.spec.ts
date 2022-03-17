@@ -2,7 +2,6 @@ import { setupApp } from '@/main/config/app'
 
 import request from 'supertest'
 import { Express } from 'express'
-import { badRequest, serverError } from '@/presentation/utils'
 
 let app: Express
 

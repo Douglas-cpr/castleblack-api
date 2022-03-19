@@ -1,6 +1,7 @@
 import {
   AddItemRepository,
-  LoadItemByIdRepository
+  LoadItemByIdRepository,
+  DestroyItemByIdRepository
 } from '@/application/contracts'
 import { Item } from '@/domain/entities'
 import { ItemModel } from '@/application/models'
@@ -37,5 +38,22 @@ export class LoadItemByIdRepositorySpy implements LoadItemByIdRepository {
     }
 
     return getItemByIdReturnValue
+  }
+}
+
+export class DestroyItemByIdRepositorySpy implements DestroyItemByIdRepository {
+  public destroyItemByIdCalledWith: string
+
+  async destroy(itemId: string): Promise<ItemModel> {
+    this.destroyItemByIdCalledWith = itemId
+
+    const getCharacterByIdReturnValue: ItemModel = {
+      id: itemId,
+      damage: faker.datatype.number({ min: 0, max: 100 }),
+      description: faker.random.words(3),
+      createdAt: new Date()
+    }
+
+    return getCharacterByIdReturnValue
   }
 }

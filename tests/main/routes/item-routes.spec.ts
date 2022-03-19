@@ -60,4 +60,18 @@ describe('Item Routers', () => {
         expect(httpResponse.status).toBe(404)
       })
     })
+
+  describe('DELETE api/item/destroy/:itemId', () => {
+    it('should return status 200 on success', async () => {
+      const httpResponse = await request(app).delete('/api/item/destroy/1')
+
+      expect(httpResponse.status).toBe(200)
+    })
+
+    it('should return status code 404 if not found', async () => {
+      const httpResponse = await request(app).delete('/api/item/destroy/any_id')
+
+      expect(httpResponse.status).toBe(404)
+    })
+  })
 })

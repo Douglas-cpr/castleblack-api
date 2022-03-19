@@ -1,7 +1,7 @@
-import { DestroyItemByService } from '@/application/services'
 import { Validation, Controller } from '@/presentation/contracts'
 import { badRequest, ok, serverError, notFound } from '@/presentation/utils'
 import { NotFoundError } from '@/presentation/errors'
+import { DestroyItemById } from '@/domain/usecases'
 
 export type DestroyItemByIdParams = {
   itemId: string
@@ -12,7 +12,7 @@ export class DestroyItemByIdController
 {
   constructor(
     private readonly validation: Validation,
-    private readonly destroyItemByIdService: DestroyItemByService
+    private readonly destroyItemById: DestroyItemById
   ) {}
 
   async handle(params: DestroyItemByIdParams) {
@@ -23,9 +23,7 @@ export class DestroyItemByIdController
         return badRequest(error)
       }
 
-      const destroyedItem = await this.destroyItemByIdService.destroy(
-        params.itemId
-      )
+      const destroyedItem = await this.destroyItemById.destroy(params.itemId)
 
       if (!destroyedItem) {
         return notFound(new NotFoundError())

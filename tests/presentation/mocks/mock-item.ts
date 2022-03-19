@@ -1,6 +1,11 @@
 import { ItemModel } from '@/application/models'
 import { Item } from '@/domain/entities'
-import { AddItem, LoadItemById, LoadItems } from '@/domain/usecases'
+import {
+  AddItem,
+  LoadItemById,
+  LoadItems,
+  DestroyItemById
+} from '@/domain/usecases'
 import { mockItemsModel } from '@/tests/domain/mocks'
 
 import faker from 'faker'
@@ -29,6 +34,19 @@ export class LoadItemByIdSpy implements LoadItemById {
   params: string
 
   async load(params: string): Promise<ItemModel> {
+    return {
+      id: params,
+      damage: faker.datatype.number({ min: 1 }),
+      description: faker.random.word(),
+      createdAt: new Date()
+    }
+  }
+}
+
+export class DestroyItemByIdSpy implements DestroyItemById {
+  params: string
+
+  async destroy(params: string): Promise<ItemModel> {
     return {
       id: params,
       damage: faker.datatype.number({ min: 1 }),

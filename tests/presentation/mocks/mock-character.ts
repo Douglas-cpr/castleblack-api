@@ -5,7 +5,8 @@ import {
   ArmACharacterWithAnItemParams,
   LoadCharacters,
   ArmACharacterWithAnItem,
-  LoadCharacterById
+  LoadCharacterById,
+  KillCharacter
 } from '@/domain/usecases'
 import { mockCharactersModel } from '@/tests/domain/mocks'
 
@@ -57,6 +58,22 @@ export class LoadCharacterByIdSpy implements LoadCharacterById {
       name: faker.name.firstName(),
       age: faker.datatype.number({ min: 1 }),
       health: faker.datatype.number({ max: 100, min: 1 }),
+      weapon: faker.datatype.uuid(),
+      bag: [],
+      createdAt: new Date()
+    }
+  }
+}
+
+export class KillCharacterSpy implements KillCharacter {
+  params: string
+
+  async kill(params: string): Promise<CharacterModel> {
+    return {
+      id: params,
+      name: faker.name.firstName(),
+      age: faker.datatype.number({ min: 1 }),
+      health: 0,
       weapon: faker.datatype.uuid(),
       bag: [],
       createdAt: new Date()

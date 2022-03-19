@@ -6,7 +6,10 @@ export const removeItem = (itemId: string) => {
 
 export const changeItemDamage = (itemId: string, damage: number) => {
   const itemToChangeIdx = items.findIndex((item) => item.id === itemId)
-  items[itemToChangeIdx].damage = damage
+
+  if (itemToChangeIdx !== -1) {
+    items[itemToChangeIdx].damage = damage
+  }
 }
 
 export let items: ItemModel[] = [

@@ -4,7 +4,10 @@ export const setCharacterHealthToZero = (characterId: string) => {
   const characterToChangeHealthIdx = characters.findIndex(
     (character) => character.id == characterId
   )
-  characters[characterToChangeHealthIdx].health = 0
+
+  if (characterToChangeHealthIdx !== -1) {
+    characters[characterToChangeHealthIdx].health = 0
+  }
 }
 
 export const characters: CharacterModel[] = [

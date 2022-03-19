@@ -5,7 +5,7 @@ import {
 } from '@/application/contracts'
 import { Character } from '@/domain/entities'
 import { CharacterModel } from '@/application/models'
-import { ArmACharacterWithAnItemParams } from '@/domain/usecases'
+import { ArmACharacterWithAnItemParams, KillCharacter } from '@/domain/usecases'
 
 import faker from 'faker'
 
@@ -69,5 +69,25 @@ export class LoadCharacterByIdRepositorySpy
     }
 
     return getCharacterByIdReturnValue
+  }
+}
+
+export class KillCharacterRepositorySpy implements KillCharacter {
+  public killCharacterCalledWith: string
+
+  async kill(characterId: string): Promise<CharacterModel> {
+    this.killCharacterCalledWith = characterId
+
+    const killCharacterReturnValue: CharacterModel = {
+      id: characterId,
+      name: faker.name.firstName(),
+      age: faker.datatype.number({ min: 1 }),
+      health: 0,
+      weapon: faker.datatype.uuid(),
+      bag: [],
+      createdAt: new Date()
+    }
+
+    return killCharacterReturnValue
   }
 }

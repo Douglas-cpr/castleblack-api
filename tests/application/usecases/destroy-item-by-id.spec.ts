@@ -1,6 +1,6 @@
 import { DestroyItemByService } from '@/application/services'
 import { DestroyItemByIdRepositorySpy } from '@/tests/application/mocks'
-import { mockAddCharacterParams, throwError } from '@/tests/domain/mocks'
+import { throwError } from '@/tests/domain/mocks'
 
 import faker from 'faker'
 
@@ -10,9 +10,10 @@ const destroyItemByIdParams = (): string => {
 
 type SutTypes = {
   sut: DestroyItemByService
+  destroyItemByIdRepositorySpy: DestroyItemByIdRepositorySpy
 }
 
-const makeSut = () => {
+const makeSut = (): SutTypes => {
   const destroyItemByIdRepositorySpy = new DestroyItemByIdRepositorySpy()
   const sut = new DestroyItemByService(destroyItemByIdRepositorySpy)
 

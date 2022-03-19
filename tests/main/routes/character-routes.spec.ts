@@ -139,4 +139,18 @@ describe('Character Routers', () => {
       expect(httpResponse.status).toBe(404)
     })
   })
+
+  describe('PUT api/character/kill/:characterId', () => {
+    it('should return status 200 on success', async () => {
+      const httpResponse = await request(app).put('/api/character/kill/1')
+
+      expect(httpResponse.status).toBe(200)
+    })
+
+    it('should return status code 404 if not found', async () => {
+      const httpResponse = await request(app).put('/api/character/kill/any_id')
+
+      expect(httpResponse.status).toBe(404)
+    })
+  })
 })

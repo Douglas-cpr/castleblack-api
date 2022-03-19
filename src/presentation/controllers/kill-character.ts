@@ -1,4 +1,4 @@
-import { KillCharacterService } from '@/application/services'
+import { KillCharacter } from '@/domain/usecases'
 import { Controller, Validation } from '@/presentation/contracts'
 import { NotFoundError } from '@/presentation/errors'
 import { badRequest, notFound, serverError, ok } from '@/presentation/utils'
@@ -12,7 +12,7 @@ export class KillCharacterController
 {
   constructor(
     private readonly validation: Validation,
-    private readonly killCharacterService: KillCharacterService
+    private readonly killCharacter: KillCharacter
   ) {}
 
   async handle(params: KillCharacterParams) {
@@ -23,7 +23,7 @@ export class KillCharacterController
         badRequest(error)
       }
 
-      const killedCharacter = await this.killCharacterService.kill(
+      const killedCharacter = await this.killCharacter.kill(
         params.characterId
       )
 

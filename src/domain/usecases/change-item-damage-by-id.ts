@@ -1,3 +1,9 @@
+import { Item } from '@/domain/entities'
+
+export type ChangeItemDamageByIdParams = {
+  itemId: string
+  damage: number
+}
 export interface ChangeItemDamageById {
-  change: (itemId: string, damage: number) => void
+  change: ({ itemId, damage }: ChangeItemDamageByIdParams) => Promise<Item>
 }

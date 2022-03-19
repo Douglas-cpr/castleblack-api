@@ -4,7 +4,8 @@ import {
   makeAddItemController,
   makeLoadItemsController,
   makeLoadItemByIdController,
-  makeDestroyItemByIdController
+  makeDestroyItemByIdController,
+  makeChangeItemDamageByIdController
 } from '@/main/factories'
 
 export default (router: Router): void => {
@@ -14,5 +15,9 @@ export default (router: Router): void => {
   router.delete(
     '/item/destroy/:itemId',
     adaptRoute(makeDestroyItemByIdController())
-  )
+  ),
+    router.put(
+      '/item/change-damage',
+      adaptRoute(makeChangeItemDamageByIdController())
+    )
 }

@@ -1,7 +1,9 @@
-import { ChangeItemDamageByIdParams } from '@/domain/usecases'
+import {
+  ChangeItemDamageById,
+  ChangeItemDamageByIdParams
+} from '@/domain/usecases'
 import { Controller, Validation } from '@/presentation/contracts'
-import { ChangeItemDamageByIdService } from '@/application/services'
-import { badRequest, notFound, ok } from '@/presentation/utils'
+import { badRequest, notFound, ok, serverError } from '@/presentation/utils'
 import { NotFoundError } from '@/presentation/errors'
 
 export class ChangeItemDamageByIdController
@@ -9,7 +11,7 @@ export class ChangeItemDamageByIdController
 {
   constructor(
     private readonly validation: Validation,
-    private readonly changeItemDamageByIdService: ChangeItemDamageByIdService
+    private readonly changeItemDamageById: ChangeItemDamageById
   ) {}
 
   async handle(params: ChangeItemDamageByIdParams) {
@@ -20,7 +22,7 @@ export class ChangeItemDamageByIdController
         return badRequest(error)
       }
 
-      const changedItem = await this.changeItemDamageByIdService.change(params)
+      const changedItem = await this.changeItemDamageById.change(params)
 
       if (!changedItem) {
         return notFound(new NotFoundError())
@@ -28,7 +30,7 @@ export class ChangeItemDamageByIdController
 
       return ok(changedItem)
     } catch (e) {
-      return badRequest(e)
+      return serverError(e)
     }
   }
 }

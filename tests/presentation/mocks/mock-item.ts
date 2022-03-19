@@ -4,7 +4,9 @@ import {
   AddItem,
   LoadItemById,
   LoadItems,
-  DestroyItemById
+  DestroyItemById,
+  ChangeItemDamageById,
+  ChangeItemDamageByIdParams
 } from '@/domain/usecases'
 import { mockItemsModel } from '@/tests/domain/mocks'
 
@@ -50,6 +52,19 @@ export class DestroyItemByIdSpy implements DestroyItemById {
     return {
       id: params,
       damage: faker.datatype.number({ min: 1 }),
+      description: faker.random.word(),
+      createdAt: new Date()
+    }
+  }
+}
+
+export class ChangeItemDamageByIdSpy implements ChangeItemDamageById {
+  params: ChangeItemDamageByIdParams
+
+  async change(params: ChangeItemDamageByIdParams): Promise<ItemModel> {
+    return {
+      id: params.itemId,
+      damage: params.damage,
       description: faker.random.word(),
       createdAt: new Date()
     }

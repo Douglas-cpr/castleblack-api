@@ -23,9 +23,7 @@ export class KillCharacterController
         badRequest(error)
       }
 
-      const killedCharacter = await this.killCharacter.kill(
-        params.characterId
-      )
+      const killedCharacter = await this.killCharacter.kill(params.characterId)
 
       if (!killedCharacter) {
         return notFound(new NotFoundError())

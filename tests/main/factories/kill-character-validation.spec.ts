@@ -1,4 +1,3 @@
-
 import { Validation } from '@/presentation/contracts'
 import { RequiredFieldValidation, ValidationComposite } from '@/validators'
 import { makeKillCharacterValidation } from '@/main/factories'

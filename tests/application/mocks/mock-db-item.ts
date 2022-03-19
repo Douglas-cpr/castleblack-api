@@ -1,12 +1,14 @@
 import {
   AddItemRepository,
   LoadItemByIdRepository,
-  DestroyItemByIdRepository
+  DestroyItemByIdRepository,
+  ChangeItemDamageByIdRepository
 } from '@/application/contracts'
 import { Item } from '@/domain/entities'
 import { ItemModel } from '@/application/models'
 
 import faker from 'faker'
+import { ChangeItemDamageByIdParams } from '@/domain/usecases'
 
 export class AddItemRepositorySpy implements AddItemRepository {
   public addItemCalledWith: Item
@@ -55,5 +57,24 @@ export class DestroyItemByIdRepositorySpy implements DestroyItemByIdRepository {
     }
 
     return getCharacterByIdReturnValue
+  }
+}
+
+export class ChangeItemDamageByIdRepositorySpy
+  implements ChangeItemDamageByIdRepository
+{
+  public changeItemDamageByIdCalledWith: ChangeItemDamageByIdParams
+
+  async change(params: ChangeItemDamageByIdParams): Promise<ItemModel> {
+    this.changeItemDamageByIdCalledWith = params
+
+    const changeItemDamageByIdReturnValue: ItemModel = {
+      id: params.itemId,
+      damage: params.damage,
+      description: faker.random.words(3),
+      createdAt: new Date()
+    }
+
+    return changeItemDamageByIdReturnValue
   }
 }

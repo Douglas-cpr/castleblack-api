@@ -1,5 +1,5 @@
 import { DestroyItemByService } from '@/application/services'
-import { FakeDestroyItemById } from '@/infra/fake'
+import { FakeDestroyItemByIdRepository } from '@/infra/fake'
 import {
   DestroyItemByIdController,
   DestroyItemByIdParams
@@ -9,7 +9,7 @@ import { Controller } from '@/presentation/contracts'
 
 export const makeDestroyItemByIdController =
   (): Controller<DestroyItemByIdParams> => {
-    const repo = new FakeDestroyItemById()
+    const repo = new FakeDestroyItemByIdRepository()
     const service = new DestroyItemByService(repo)
     return new DestroyItemByIdController(
       makeDestroyItemByIdValidation(),

@@ -23,7 +23,9 @@ export class DestroyItemByIdController
         return badRequest(error)
       }
 
-      const destroyedItem = await this.destroyItemByIdService.destroy(params.itemId)
+      const destroyedItem = await this.destroyItemByIdService.destroy(
+        params.itemId
+      )
 
       if (!destroyedItem) {
         return notFound(new NotFoundError())

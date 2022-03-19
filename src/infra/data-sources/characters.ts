@@ -1,5 +1,12 @@
 import { CharacterModel } from '@/application/models'
 
+export const setCharacterHealthToZero = (characterId: string) => {
+  const characterToChangeHealthIdx = characters.findIndex(
+    (character) => character.id == characterId
+  )
+  characters[characterToChangeHealthIdx].health = 0
+}
+
 export const characters: CharacterModel[] = [
   {
     id: '1',

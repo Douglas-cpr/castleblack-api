@@ -1,6 +1,6 @@
 import { ItemModel } from '@/application/models'
 
-export const destroyItem = (itemId: string) => {
+export const removeItem = (itemId: string) => {
   items = items.filter((item) => item.id !== itemId)
 }
 

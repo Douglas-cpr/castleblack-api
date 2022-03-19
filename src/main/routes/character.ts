@@ -4,7 +4,8 @@ import {
   makeLoadCharactersController,
   makeAddCharacterController,
   makeArmACharacterWithAnItemController,
-  makeLoadCharacterByIdController
+  makeLoadCharacterByIdController,
+  makeKillCharacterController
 } from '@/main/factories'
 
 export default (router: Router): void => {
@@ -15,4 +16,8 @@ export default (router: Router): void => {
     adaptRoute(makeArmACharacterWithAnItemController())
   )
   router.get('/character/:id', adaptRoute(makeLoadCharacterByIdController()))
+  router.put(
+    '/character/kill/:characterId',
+    adaptRoute(makeKillCharacterController())
+  )
 }

@@ -5,7 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "start:dev": "yarn format; ts-node-dev -r tsconfig-paths/register src/main/server.ts ts-node",
-    "test": "jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "test:ver": "jest --verbose",
     "format": "prettier --config .prettierrc '**/**/*.ts' --write"
   },

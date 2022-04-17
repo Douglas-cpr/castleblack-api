@@ -4,7 +4,6 @@ import {
 } from '@/domain/usecases'
 import { Controller, Validation } from '@/presentation/contracts'
 import { badRequest, notFound, ok, serverError } from '@/presentation/utils'
-import { NotFoundError } from '@/presentation/errors'
 
 export class ChangeItemDamageByIdController
   implements Controller<ChangeItemDamageByIdParams>
@@ -25,7 +24,7 @@ export class ChangeItemDamageByIdController
       const changedItem = await this.changeItemDamageById.change(params)
 
       if (!changedItem) {
-        return notFound(new NotFoundError())
+        return notFound()
       }
 
       return ok(changedItem)

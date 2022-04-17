@@ -1,7 +1,6 @@
 import { LoadItemById } from '@/domain/usecases'
 import { Controller, Validation } from '@/presentation/contracts'
 import { badRequest, ok, serverError, notFound } from '@/presentation/utils'
-import { NotFoundError } from '@/presentation/errors'
 
 export type LoadItemByIdControllerParams = {
   id: string
@@ -26,7 +25,7 @@ export class LoadItemByIdController
       const item = await this.loadItemById.load(params.id)
 
       if (!item) {
-        return notFound(new NotFoundError())
+        return notFound()
       }
 
       return ok(item)

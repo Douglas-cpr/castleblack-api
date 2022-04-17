@@ -1,6 +1,5 @@
 import { Validation, Controller } from '@/presentation/contracts'
 import { badRequest, ok, serverError, notFound } from '@/presentation/utils'
-import { NotFoundError } from '@/presentation/errors'
 import { DestroyItemById } from '@/domain/usecases'
 
 export type DestroyItemByIdParams = {
@@ -26,7 +25,7 @@ export class DestroyItemByIdController
       const destroyedItem = await this.destroyItemById.destroy(params.itemId)
 
       if (!destroyedItem) {
-        return notFound(new NotFoundError())
+        return notFound()
       }
 
       return ok(destroyedItem)

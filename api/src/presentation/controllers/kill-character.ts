@@ -1,6 +1,5 @@
 import { KillCharacter } from '@/domain/usecases'
 import { Controller, Validation } from '@/presentation/contracts'
-import { NotFoundError } from '@/presentation/errors'
 import { badRequest, notFound, serverError, ok } from '@/presentation/utils'
 
 export type KillCharacterParams = {
@@ -26,7 +25,7 @@ export class KillCharacterController
       const killedCharacter = await this.killCharacter.kill(params.characterId)
 
       if (!killedCharacter) {
-        return notFound(new NotFoundError())
+        return notFound()
       }
 
       return ok(killedCharacter)

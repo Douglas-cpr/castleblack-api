@@ -1,7 +1,6 @@
 import { LoadCharacterById } from '@/domain/usecases'
 import { Controller, HttpResponse, Validation } from '@/presentation/contracts'
 import { badRequest, notFound, ok, serverError } from '@/presentation/utils'
-import { NotFoundError } from '@/presentation/errors'
 
 export type LoadCharacterByIdParams = {
   id: string
@@ -26,7 +25,7 @@ export class LoadCharacterByIdController
       const character = await this.loadCharacterById.load(params.id)
 
       if (!character) {
-        return notFound(new NotFoundError())
+        return notFound()
       }
 
       return ok(character)
